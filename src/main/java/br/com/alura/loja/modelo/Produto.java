@@ -15,7 +15,7 @@ import javax.persistence.Table;
 public class Produto {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String nome;
 	private String descricao;
