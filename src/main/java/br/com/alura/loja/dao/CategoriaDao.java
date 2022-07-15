@@ -4,11 +4,11 @@ import javax.persistence.EntityManager;
 
 import br.com.alura.loja.modelo.Categoria;
 
-public class CategoriaDao {
+public class CategoriaDAO {
 	
 	private EntityManager em;
 
-	public CategoriaDao(EntityManager em) {
+	public CategoriaDAO(EntityManager em) {
 		this.em = em;
 	}
 	

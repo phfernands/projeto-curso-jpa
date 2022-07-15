@@ -6,8 +6,8 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 
-import br.com.alura.loja.dao.CategoriaDao;
-import br.com.alura.loja.dao.ProdutoDao;
+import br.com.alura.loja.dao.CategoriaDAO;
+import br.com.alura.loja.dao.ProdutoDAO;
 import br.com.alura.loja.modelo.Categoria;
 import br.com.alura.loja.modelo.Produto;
 import br.com.alura.loja.util.JPAUtil;
@@ -18,16 +18,16 @@ public class CadastroDeProduto {
         
 		cadastrarProduto();
 		EntityManager em = JPAUtil.getEntityManager();
-		ProdutoDao produtoDao = new ProdutoDao(em);
+		ProdutoDAO produtoDao = new ProdutoDAO(em);
 		
-		Produto p = produtoDao.buscarPorId(3l);
+		Produto p = produtoDao.buscarPorId(1l);
 		System.out.println(p.getPreco());
 		
-		List<Produto> todos = produtoDao.buscarPorCategoria("Smart TV");
+		List<Produto> todos = produtoDao.buscarPorCategoria("Periférico");
 		todos.forEach(produto -> System.out.println(produto.getNome()));
 		
-		BigDecimal precoDoProduto = produtoDao.buscarPrecoDoProdutoComNome("Smart TV Samsung");
-		System.out.println("Preço da TV Samsung: " + precoDoProduto);
+		BigDecimal precoDoProduto = produtoDao.buscarPrecoDoProdutoComNome("Mouse Razer");
+		System.out.println("Preço do mouse: " + precoDoProduto);
     }
 
 	private static void cadastrarProduto() {
@@ -35,8 +35,8 @@ public class CadastroDeProduto {
         Produto celular = new Produto("Mouse Razer", "Mouse c/fio RGB", new BigDecimal("250"), pc );
 
         EntityManager em = JPAUtil.getEntityManager();
-        ProdutoDao produtoDao = new ProdutoDao(em);
-        CategoriaDao categoriaDao = new CategoriaDao(em);
+        ProdutoDAO produtoDao = new ProdutoDAO(em);
+        CategoriaDAO categoriaDao = new CategoriaDAO(em);
  
         em.getTransaction().begin();
 

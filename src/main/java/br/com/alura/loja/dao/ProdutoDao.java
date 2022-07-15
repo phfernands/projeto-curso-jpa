@@ -7,11 +7,11 @@ import javax.persistence.EntityManager;
 
 import br.com.alura.loja.modelo.Produto;
 
-public class ProdutoDao {
+public class ProdutoDAO {
 	
 	private EntityManager em;
 
-	public ProdutoDao(EntityManager em) {
+	public ProdutoDAO(EntityManager em) {
 		this.em = em;
 	}
 	
@@ -37,8 +37,8 @@ public class ProdutoDao {
 	}
 	
 	public List<Produto> buscarPorCategoria(String nome) {
-		String jpql = "SELECT p FROM Produto p WHERE p.categoria.nome = :nome";
-		return em.createQuery(jpql, Produto.class)
+		
+		return em.createNamedQuery("Produto.buscarPorCategoria", Produto.class)
 				.setParameter("nome", nome)
 				.getResultList();
 	}
